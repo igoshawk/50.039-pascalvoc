@@ -1,0 +1,220 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+#: import FileChooser kivy.uix.filechooser.FileChooser
+
+ScreenManagement:
+    transition: FadeTransition()
+    MainScreen:
+    AnotherScreen:
+
+<MainScreen>:
+    name: 'main'
+
+    BoxLayout:
+        BoxLayout:
+            orientation: 'vertical'
+
+            BoxLayout:
+                size_hint_y: None
+                height: 50
+
+                Button:
+                    text: 'Icon View'
+                    on_press: fc.view_mode = 'icon'
+                Button:
+                    text: 'List View'
+                    on_press: fc.view_mode = 'list'
+
+            FileChooser:
+                id: fc
+                FileChooserIconLayout
+                FileChooserListLayout
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: 150
+                
+                Button:
+                    font_size: 18
+                    text: 'Predict on image'
+                    on_release: root.selected(fc.selection)
+                Button:
+                    font_size: 18
+                    text: 'View top predictions of each class'
+                    on_release: app.root.current='other'
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            Image:
+                id: img
+                source: ''
+
+            BoxLayout:
+                height: 50
+                Label:
+                    id: pred
+                    text:'The prediction of selected image will be displayed here'
+                    font_size: 30
+
+
+
+<AnotherScreen>:
+    name: 'other'
+    
+    BoxLayout:
+        orientation: 'vertical'
+
+        BoxLayout:
+            Label:
+                id: rank_display
+                font_size: 18
+                text: ''
+
+
+        BoxLayout:
+            Image:
+                id: class0
+            Image:
+                id: class1
+            Image:
+                id: class2
+            Image:
+                id: class3
+            Image:
+                id: class4
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            Label:
+                text: 'Class 0: Aeroplane'
+                font_size: 18
+            Label:
+                text: 'Class 1: Bicycle'
+                font_size: 18
+            Label:
+                text: 'Class 2: Bird'
+                font_size: 18
+            Label:
+                text: 'Class 3: Boat'
+                font_size: 18
+            Label:
+                text: 'Class 4: Bottle'
+                font_size: 18
+
+        BoxLayout:
+            Image:
+                id: class5
+            Image:
+                id: class6
+            Image:
+                id: class7
+            Image:
+                id: class8
+            Image:
+                id: class9
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            Label:
+                text: 'Class 5: Bus'
+                font_size: 18
+            Label:
+                text: 'Class 6: Car'
+                font_size: 18
+            Label:
+                text: 'Class 7: Cat'
+                font_size: 18
+            Label:
+                text: 'Class 8: Chair'
+                font_size: 18
+            Label:
+                text: 'Class 9: Cow'
+                font_size: 18
+
+        BoxLayout:
+            Image:
+                id: class10
+            Image:
+                id: class11
+            Image:
+                id: class12
+            Image:
+                id: class13
+            Image:
+                id: class14
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            Label:
+                text: 'Class 10: Dining table'
+                font_size: 18
+            Label:
+                text: 'Class 11: Dog'
+                font_size: 18
+            Label:
+                text: 'Class 12: Horse'
+                font_size: 18
+            Label:
+                text: 'Class 13: Motorbike'
+                font_size: 18
+            Label:
+                text: 'Class 14: Person'
+                font_size: 18
+
+        BoxLayout:
+            Image:
+                id: class15
+            Image:
+                id: class16
+            Image:
+                id: class17
+            Image:
+                id: class18
+            Image:
+                id: class19
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            Label:
+                text: 'Class 15: Pottedplant'
+                font_size: 18
+            Label:
+                text: 'Class 16: Sheep'
+                font_size: 18
+            Label:
+                text: 'Class 17: Sofa'
+                font_size: 18
+            Label:
+                text: 'Class 18: Train'
+                font_size: 18
+            Label:
+                text: 'Class 19:: TVmonitor'
+                font_size: 18
+
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+
+            Button:
+                font_size: 18
+                text: 'Display'
+                on_release: root.init()
+
+            Button:
+                font_size: 18
+                text: 'Higher rank'
+                on_release: root.pageup()
+            Button:
+                font_size: 18
+                text: 'Lower rank'
+                on_release: root.pagedown()
+
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+
+            Button:
+                font_size: 18
+                on_release: app.root.current='main'
+                text: 'Back to image prediction'
